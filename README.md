@@ -1,7 +1,10 @@
 ruby-learning
 =============
 
-Ruby language cheat-sheet to remember everything I feel interesting about the language while I'm learning. Basically at the beggining is about the book I'm reading right now: Programming Ruby 1.9 3rd Edition --- Dave Thomas
+Ruby language cheat-sheet to remember everything I feel interesting about the language while I'm learning. Basically at the beggining is about the book I'm reading right now.
+
+* Programming Ruby 1.9 3rd Edition --- Dave Thomas
+* [http://www.zenspider.com/Languages/Ruby/QuickRef.html](http://www.zenspider.com/Languages/Ruby/QuickRef.html)
 
 `irb` -> interactive ruby console 
 
