@@ -101,3 +101,55 @@ When calling a function apart from the parameters we can transfer a `block`, a c
 
 example:
 `animals.each {|animal| puts animal }` `upto(6) {|i| print i }`
+
+### Classes
+
+    class MathConcrete < SuperClass
+      def initialize(arg0, arg1)
+    	@arg0 = arg0
+    	@arg1 = arg1
+      end
+    end
+    def to_s
+      "ARG0: #{@arg0} ARG1: #{@arg1}"
+    end
+    math = MathConcrete.new(3, 4)
+    
+`p` is a statement for prety print an object
+
+##### Setters and getters
+
+    def arg0 ## readonly accessor
+      return @arg0
+    end 
+
+    def arg1=(arg1) ## setter
+      @arg1 = arg1
+    end
+
+or also 
+
+    class MathConcrete
+      attr_reader :arg0 ## now is not necessary to define a arg0 function/accessor
+      attr_accessor :arg1 ## nor the setter 
+    end
+    
+##### Class methods Visibility
+
+    class MyClass        def method1        end      protected        def method2        end      private        def method3        end	end
+or also you can define the visibility at the end
+    class X
+	  def func1
+	  end
+	  
+	  def func2
+	  end	  
+	  
+	  protected   :func1, :func2
+	  private     :func44    end     
+`obj.class`
+`obj.object_id`
+`obj.dup` duplicates the object (java clone)
+
+`obj.freeze` runtime error when modify the object
+
