@@ -152,4 +152,52 @@ or also
 `obj.dup` duplicates the object (java clone)
 
 `obj.freeze` runtime error when modify the object
-
+### Arrays and Hashes
+##### Arrays 
+    a = [ 1, 3, 9, 10, 100, 3.14, "HOLA"]
+	a.length => 7
+	a[0] => 1
+	a[-1] => "HOLA"
+	a[start, count] => a[0, 2] => [1, 3]
+	a[-3, 2] => [100, 3.14]
+	a[1..2]  => [3, 9] ## ranges from position 1 to position 2 (end 2 included)
+	a[1...2] => [3] ## range from position 1 to position 2 (end not included)
+	a.push "red"
+	a.pop  => "red"
+	a.shift => 1 ## the first element is removed
+	a.first => 3
+	a.last => 3.14
+	a << "COSA..."
+	
+Some blocks with arrays and hashes
+
+    dict.each do |key, value|
+      puts "#{key}: #{value}"
+    end
+    
+    array.each do |value| 
+      puts "#{value}"
+    end 
+    
+User on file object 
+
+    f = File.open("AAA")
+    f.each do |line|
+    	puts line
+    end
+    f.close
+
+python Reduce
+    
+    [1, 3, 5, 7].inject(0) {|sum, element| sum+element} 
+
+python items()
+    
+    ['a', 'b', 'c'].each_with_index{ |item, index| index+= 1 }
+
+if the last paramet of a function starts with & it converts the block to a local variable of type Proc that we can store, and execute later. other ways of converting a block into an object:
+
+    x = lambda { |param| puts param } ## x is a Proc instance
+    x.call "HI"
+
+    x -> param { puts param } ## alternative way to do a lambda    
