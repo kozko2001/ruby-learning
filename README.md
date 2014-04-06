@@ -200,4 +200,33 @@ if the last paramet of a function starts with & it converts the block to a local
     x = lambda { |param| puts param } ## x is a Proc instance
     x.call "HI"
 
-    x -> param { puts param } ## alternative way to do a lambda    
+    x -> param { puts param } ## alternative way to do a lambda (1.9)
+    x -> param1, param2 { puts param2 } ## with multiple parameters 
+
+### Modules, Inheritance and mixins
+
+#### Module example 
+
+    module Mod
+      def Mod.ttt(x)
+        print x
+      end
+    end
+    
+    require Mod
+    Mod.ttt(2)
+
+you can include a Module on a class, if done all the methods of the module are mixed in the class making them available
+
+    class Class
+      include Mod
+    end
+    
+    c = Class.new()
+    c.ttt(2)
+
+Using the ruby library we can `include Comparable`, this mixin defines 6 operators (=,<,>,<=,>=,!=) and requires that
+the class that include it `def <=> (other)` to know how to sort elements. Something similar happens with `include Enumerable` and `def each` -> map, findi\_all etc..
+
+Ruby only supports single inheritance, but just allow you to include mixins functionality. traits of a another class.
+
