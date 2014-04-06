@@ -230,3 +230,139 @@ the class that include it `def <=> (other)` to know how to sort elements. Someth
 
 Ruby only supports single inheritance, but just allow you to include mixins functionality. traits of a another class.
 
+### Standard library
+
+#### numbers
+
+    3.times { print "X" }
+    1.upto(5) { |i| print i }
+    99.downto(95) { |i|...}
+    50.step(80, 5)....
+
+#### strings
+
+   "Seconds/day: #{24*60*60}"
+   "{'Ho!' * 3} Mery Christmas"
+   "now is #{ def the(a) 
+                  'the ' + a
+              end 
+              the('time' 
+            } ..."
+
+  %q/general single-quoted string/ ## other way to generate a single quoted string
+  %Q!general double-quoted string! ## Q is optional and ! is the delimiter could be anything, if is (,[,{,< must match the ),],},>
+  %Q{Other delimiter}
+
+#### ranges 
+    1..10
+    'a'..'z'
+    0..."cat".length
+
+    1..10.to\_a ## converts to array
+    1..10.max 
+
+    (1..10) === 5 ## test if 5 in range
+
+### Regular expressions
+
+   "dog and cat =~ /cat/ => 8 ## 8 is when the regex match
+   "dog" =~ /cat/ => nil
+   "dog and cat".sub(/cat/, "mouse) ## sub -> only once gsub globally
+
+### Methods 
+
+Method naming:
+  if returns a boolean must be suffixed with ?
+  if modify the parameters must suffix with ! (as they are dangerous)
+  if the method can appear on the left side of an assigment suffix with =
+
+Optional arguments `def func(arg1="hello")`
+vararg arguments   `def func(arg1, *vararg)` func(1,2,3,4) => vararg = [2,3,4]
+                   `def func(arg1 *vararg, last) func(1,2,3,4) => vararg = [2,3], last= 4
+
+func(1, 2, 3) === func 1, 2, 3
+
+
+Expanding collection in method calls 
+    def five(a, b, c, d, e)
+    
+    (1,2,3,*['a','b']) 
+    five(*['a','b'],1,2,3) 
+    five(*(10..14)) 
+    five(*[1,2], 3, *(4..5))
+
+If the last argument to a method is preceded by an ampersand, Ruby assumes that it is a Proc object. It removes it from the parameter list, converts the Proc object into a block, and associates it with the method.
+
+operators 
+   `def +(other)`
+   `def <<(score)`
+   `def [](p1, p2, p3)` ## a[5,9, 102]
+   `def []=(*params)`
+
+usage of `\`date\`` exampans to command line result like bash
+
+like python => a, b = [1, 4] => a = 1, b = 4
+            => a, b = [1, 2, 3, 4, 5] => a = 1, b = 2
+
+defined? => returns nil if its argument is not defined
+
+defined? strange_var => nil
+defined? 1 => "expression"
+defined? printf => "method"
+
+case expressions
+
+  case
+  when song.name == "Misty"
+    puts "Not again!" 
+  when song.duration > 120
+    puts "Too long!" 
+  when Time.now.hour > 21
+    puts "It's too late" 
+  else
+    song.play
+  end
+
+### Exceptions
+
+    try {
+    } catch( Exception e )  {
+    } finally {
+    }
+
+on ruby:
+
+    begin
+     ...
+    rescue
+     ... # handle error
+    else 
+     ... ## congrats no error
+    ensure
+     f.close
+    end
+
+Raising a exception
+
+    raise
+    raise "bad mp3 encoding"
+    raise InterfaceException, "Keyboard failure", caller
+
+
+### Basic IO
+
+Opening a file ...
+
+    file = File.new("testfile", "r") 
+    # ... process the file 
+    file.close
+
+Reading lines of a file using iterators
+
+    File.open("file") do |file| 
+      file.each_line {|line| puts "l #{line.dump}" }
+    end
+
+Writing file 
+    file.puts "HELO"
+
